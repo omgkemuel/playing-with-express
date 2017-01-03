@@ -2,13 +2,10 @@ const express = require('express');
 const app = express();
 
 app.use(express.static('public'));
+app.set('view engine', 'jade');
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/goodbye', function(req, res) {
-  res.send('Goodbye World!');
+  res.render('index', {title:'Express Yo!', message: 'Hey Frank!'});
 });
 
 const server = app.listen(1337, function() {
